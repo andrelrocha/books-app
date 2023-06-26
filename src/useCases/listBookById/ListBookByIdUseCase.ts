@@ -2,8 +2,13 @@ import { books } from "../../models/Book";
 
 class ListBookByIdUseCase {
     async execute(id: string) {
-        const book = await books.findById(id)
-        return book
+        try {
+            const book = await books.findById(id)
+            return book
+        } catch (err) {
+            console.error(err);
+            throw new Error('Book not found in our database!');
+        }
     }
 }
 
