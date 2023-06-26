@@ -1,7 +1,8 @@
 import express from "express";
 
 import { db } from "./db/dbConnect"
-import { books } from "./models/Book";
+
+import { router } from "./routes"
 
 
 db.on("error", console.log.bind(console, 'Database connection error!'))
@@ -12,15 +13,7 @@ const app = express();
 app.use(express.json())
 
 
+app.use(router)
 
-app.get('/', (req, res) => {
-  res.status(200).send();
-}) 
-
-app.get('/livros', (req, res) => {
-  books.find((err, books) => {
-    res.status(200).json(books)
-  })
-})
 
 export { app }
