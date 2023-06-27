@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import { createAuthor } from "../useCases/author/createAuthor";
+import { deleteAuthor } from "../useCases/author/deleteAuthor";
 import { listAuthors } from "../useCases/author/listAuthors";
 import { updateAuthor } from "../useCases/author/updateAuthor";
 
@@ -16,6 +17,10 @@ authorRoutes.post("/", (req, res) => {
 
 authorRoutes.put("/:id", (req, res) => {
     return updateAuthor.handle(req, res)
+})
+
+authorRoutes.delete("/:id", (req, res) => {
+    return deleteAuthor.handle(req, res)
 })
 
 export { authorRoutes }
