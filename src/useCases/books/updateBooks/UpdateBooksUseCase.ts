@@ -12,16 +12,18 @@ class UpdateBookUseCase {
     
     async execute ({ id, title, author, publisher, pageqty }: IRequest) {
         try {
-            const bookExists = await books.findById(id);
-
-            if (bookExists) {
-                const updatedBook = await books.findByIdAndUpdate(id, {
+            const updatedBook = await books.findByIdAndUpdate(
+                id,
+                {
                     title,
                     author,
                     publisher,
                     pageqty,
-                }, { new: true });
-
+                },
+                { new: true }
+            );
+      
+            if (updatedBook) {
                 return updatedBook;
             } else {
                 throw new Error("Book not found in our database!");

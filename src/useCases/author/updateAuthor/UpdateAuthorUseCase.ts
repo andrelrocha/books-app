@@ -10,14 +10,16 @@ class UpdateAuthorUseCase {
 
     async execute({ id, name, country }: IRequest ) {
         try {
-            const authorExists = await authors.findById(id);
-
-            if (authorExists) {
-                const updatedAuthor = await authors.findByIdAndUpdate(id, {
+            const updatedAuthor = await authors.findByIdAndUpdate(
+                id,
+                {
                     name,
                     country,
-                }, { new: true });
-
+                },
+                { new: true }
+            );
+      
+            if (updatedAuthor) {
                 return updatedAuthor;
             } else {
                 throw new Error("Author not found in our database!");
@@ -28,5 +30,6 @@ class UpdateAuthorUseCase {
         }
     }
 }
+      
 
 export { UpdateAuthorUseCase };

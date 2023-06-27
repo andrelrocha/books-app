@@ -1,6 +1,7 @@
 import { books } from "../../../models/Book";
 
 class ListBookByIdUseCase {
+    
     async execute(id: string) {
         try {
             const book = await books.findById(id).populate("author", "name");
