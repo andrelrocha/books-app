@@ -4,4 +4,4 @@ import { UpdateAuthorController } from "./UpdateAuthorController";
 const updateAuthorUseCase = new UpdateAuthorUseCase();
 const updateAuthor = new UpdateAuthorController(updateAuthorUseCase);
 
-export { updateAuthor }
+export { updateAuthor };

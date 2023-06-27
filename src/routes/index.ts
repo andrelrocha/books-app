@@ -1,11 +1,11 @@
-import { Router } from "express"
+import { Router } from "express";
 
-import { booksRoutes } from "./books.routes"
-import { authorRoutes } from "./authors.routes"
+import { booksRoutes } from "./books.routes";
+import { authorRoutes } from "./authors.routes";
 
-const router = Router()
+const router = Router();
 
-router.use("/books", booksRoutes)
-router.use("/authors", authorRoutes)
+router.use("/books", booksRoutes);
+router.use("/authors", authorRoutes);
 
-export { router }
+export { router };

@@ -7,10 +7,10 @@ class ListAuthorsController {
     constructor(private listAuthors: ListAuthorsUseCase) { }
     
     async handle(request: Request, response: Response): Promise<Response> {
-        const authors = await this.listAuthors.execute()
+        const authors = await this.listAuthors.execute();
 
-        return response.status(200).json(authors)
+        return response.status(200).json(authors);
     }
 }
 
-export { ListAuthorsController }
+export { ListAuthorsController };

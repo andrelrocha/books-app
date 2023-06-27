@@ -1,4 +1,4 @@
-import { authors } from "../../../models/Author"
+import { authors } from "../../../models/Author";
 
 interface IRequest {
     name: string;
@@ -22,9 +22,9 @@ class CreateAuthorUseCase {
             }
         } catch (err) {
             console.error(err);
-            throw new Error('Failed to create author');
+            throw new Error("Failed to create author");
         }
     }
 }
 
-export { CreateAuthorUseCase }
+export { CreateAuthorUseCase };

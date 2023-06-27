@@ -24,9 +24,9 @@ class UpdateAuthorUseCase {
             }
         } catch (err) {
             console.error(err);
-            throw new Error('Failed to update author');
+            throw new Error("Failed to update author");
         }
     }
 }
 
-export { UpdateAuthorUseCase }
+export { UpdateAuthorUseCase };

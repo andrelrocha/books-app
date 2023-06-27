@@ -7,12 +7,12 @@ class DeleteAuthorController {
     constructor(private deleteAuthor: DeleteAuthorUseCase) { }
 
     async handle(req: Request, res: Response): Promise<Response> {
-        const { id } = req.params
+        const { id } = req.params;
 
-        await this.deleteAuthor.execute(id)
+        await this.deleteAuthor.execute(id);
 
-        return res.status(204).send('Author successfully deleted !')
+        return res.status(204).send("Author successfully deleted !");
     }
 }
 
-export { DeleteAuthorController }
+export { DeleteAuthorController };

@@ -9,11 +9,11 @@ class ListBooksController {
     async handle(request: Request, response: Response): Promise<Response> {
 
         
-        const allBooks = await this.listBooksUseCase.execute()
+        const allBooks = await this.listBooksUseCase.execute();
 
-        return response.status(200).json(allBooks)
+        return response.status(200).json(allBooks);
     }
 
 }
 
-export { ListBooksController }
+export { ListBooksController };

@@ -28,9 +28,9 @@ class UpdateBookUseCase {
             }
         } catch (err) {
             console.error(err);
-            throw new Error('Failed to update book');
+            throw new Error("Failed to update book");
         }
     }
 }
 
-export { UpdateBookUseCase }
+export { UpdateBookUseCase };

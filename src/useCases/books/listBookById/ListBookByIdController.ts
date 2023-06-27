@@ -8,12 +8,12 @@ class ListBookByIdController {
 
     async handle(req: Request, res: Response): Promise<Response> {
         
-        const { id } = req.params
+        const { id } = req.params;
 
-        const book = await this.listBookById.execute(id)
+        const book = await this.listBookById.execute(id);
 
-        return res.status(200).json(book)
+        return res.status(200).json(book);
     }
 }
 
-export { ListBookByIdController }
+export { ListBookByIdController };
