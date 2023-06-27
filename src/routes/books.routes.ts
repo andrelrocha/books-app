@@ -1,9 +1,10 @@
 import { Router } from "express";
 
 import { createBook } from "../useCases/createBooks";
+import { deleteBook } from "../useCases/deleteBooks";
 import { listBooks } from "../useCases/listBooks";
-import { updateBook } from "../useCases/updateBooks";
 import { listBookById } from "../useCases/listBookById";
+import { updateBook } from "../useCases/updateBooks";
 
 const booksRoutes = Router();
 
@@ -21,6 +22,10 @@ booksRoutes.post("/", (req, res) => {
 
 booksRoutes.put("/:id", (req, res) => {
     return updateBook.handle(req, res)
+})
+
+booksRoutes.delete("/:id", (req, res) => {
+    return deleteBook.handle(req, res)
 })
 
 export { booksRoutes }
