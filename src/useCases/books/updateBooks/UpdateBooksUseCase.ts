@@ -1,4 +1,4 @@
-import { books } from "../../models/Book";
+import { books } from "../../../models/Book";
 
 interface IRequest {
     id: string;

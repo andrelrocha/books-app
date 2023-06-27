@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { createBook } from "../useCases/createBooks";
-import { deleteBook } from "../useCases/deleteBooks";
-import { listBooks } from "../useCases/listBooks";
-import { listBookById } from "../useCases/listBookById";
-import { updateBook } from "../useCases/updateBooks";
+import { createBook } from "../useCases/books/createBooks";
+import { deleteBook } from "../useCases/books/deleteBooks";
+import { listBooks } from "../useCases/books/listBooks";
+import { listBookById } from "../useCases/books/listBookById";
+import { updateBook } from "../useCases/books/updateBooks";
 
 const booksRoutes = Router();
 
