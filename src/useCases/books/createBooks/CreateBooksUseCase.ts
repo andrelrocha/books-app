@@ -26,7 +26,7 @@ class CreateBookUseCase {
             }
         } catch (err) {
             console.error(err);
-            throw new Error("Failed to create book");
+            throw new Error("Failed to create book entry in database");
         }
     }
 }

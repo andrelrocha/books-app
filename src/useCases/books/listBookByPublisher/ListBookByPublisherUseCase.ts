@@ -6,10 +6,15 @@ class ListBookByPublisherUseCase {
 
         try {
             const booksByPublisher = await books.find({ "publisher": publisher });
+
+            if (booksByPublisher.length === 0) {
+                throw new Error("No books found for the specified publisher!");
+            }
+            
             return booksByPublisher;
         } catch (err) {
             console.error(err);
-            throw new Error("Book not found in our database!");
+            throw new Error(`Error occurred while fetching books by publisher ${publisher}!`);
         }
     }
 }

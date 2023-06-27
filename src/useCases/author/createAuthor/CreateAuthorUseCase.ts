@@ -22,7 +22,7 @@ class CreateAuthorUseCase {
             }
         } catch (err) {
             console.error(err);
-            throw new Error("Failed to create author");
+            throw new Error("Failed to create author entry in database");
         }
     }
 }
