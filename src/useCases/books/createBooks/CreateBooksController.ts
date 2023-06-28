@@ -9,14 +9,28 @@ class CreateBookController {
     async handle(req: Request, res: Response): Promise<Response> {
         const { title, author, publisher, pageqty } = req.body;
 
-        const newBook = await this.createBook.execute({
-            title,
-            author,
-            publisher,
-            pageqty,
-        });
+        try {
+            const newBook = await this.createBook.execute({
+                title,
+                author,
+                publisher,
+                pageqty,
+            });
 
-        return res.status(201).json(newBook);
+            return res.status(201).json(newBook);
+        } catch (err) {
+            console.error(err);
+
+            if (typeof err === "string") {
+                return res.status(400).send(err);
+            }
+
+            if (err instanceof Error) {
+                return res.status(400).send(err.toString());
+            }
+
+            return res.status(500).send("Internal Server Error");
+        }
     }
 }
 

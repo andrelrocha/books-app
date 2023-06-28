@@ -7,13 +7,23 @@ class ListBooksController {
     constructor(private listBooksUseCase: ListBooksUseCase) { }
 
     async handle(request: Request, response: Response): Promise<Response> {
+        try {
+            const allBooks = await this.listBooksUseCase.execute();
+            return response.status(200).json(allBooks);
+        } catch (err) {
+            console.error(err);
 
-        
-        const allBooks = await this.listBooksUseCase.execute();
+            if (typeof err === "string") {
+                return response.status(500).send(err);
+            }
 
-        return response.status(200).json(allBooks);
+            if (err instanceof Error) {
+                return response.status(500).send(err.toString());
+            }
+
+            return response.status(500).send("Internal Server Error");
+        }
     }
-
 }
 
 export { ListBooksController };

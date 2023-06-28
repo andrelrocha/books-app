@@ -11,15 +11,28 @@ class UpdateAuthorController {
 
         const { id } = req.params;
 
-        await this.updateAuthor.execute({
-            name, 
-            country,
-            id,
-        });
+        try {
+            await this.updateAuthor.execute({
+                name,
+                country,
+                id,
+            });
 
-        return res.status(200).send({message: "Author updated successfully!"});
+            return res.status(200).send({ message: "Author updated successfully!" });
+        } catch (err) {
+            console.error(err);
+
+            if (typeof err === "string") {
+                return res.status(400).send(err);
+            }
+
+            if (err instanceof Error) {
+                return res.status(400).send(err.toString());
+            }
+
+            return res.status(500).send("Internal Server Error");
+        }
     }
-
 }
 
 export { UpdateAuthorController };

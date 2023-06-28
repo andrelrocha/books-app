@@ -10,9 +10,23 @@ class ListBookByPublisherController {
         //captura informações em solicitações GET
         const { publisher } = req.query;
 
-        const booksByPublisher = await this.listBookByPublisherUseCase.execute(publisher as string);
+        try {
+            const booksByPublisher = await this.listBookByPublisherUseCase.execute(publisher as string);
 
-        return res.status(200).json(booksByPublisher);
+            return res.status(200).json(booksByPublisher);
+        } catch (err) {
+            console.error(err);
+
+            if (typeof err === "string") {
+                return res.status(400).send(err);
+            }
+
+            if (err instanceof Error) {
+                return res.status(400).send(err.toString());
+            }
+
+            return res.status(500).send("Internal Server Error");
+        }
     }
 }
 
