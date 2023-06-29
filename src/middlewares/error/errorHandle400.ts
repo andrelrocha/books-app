@@ -9,7 +9,7 @@ const errorHandle400 = (err: unknown, req: Request, res: Response, next: NextFun
     }
 
     if (err instanceof Error) {
-    // The error is an instance of the Error class, which has a toString() method
+        // The error is an instance of the Error class, which has a toString() method
         return res.status(400).send(err.toString());
     }
 

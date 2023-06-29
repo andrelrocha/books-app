@@ -1,11 +1,8 @@
 import express from "express";
 
-import { Request, Response, NextFunction } from "express";
-
 import { db } from "./db/dbConnect";
-
 import { router } from "./routes";
-import { errorHandle400 } from "./error/errorHandle400";
+import { errorHandle400 } from "./middlewares/error/errorHandle400";
 
 
 db.on("error", console.log.bind(console, "Database connection error!"));

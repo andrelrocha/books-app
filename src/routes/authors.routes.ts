@@ -3,12 +3,17 @@ import { Router } from "express";
 import { createAuthor } from "../useCases/author/createAuthor";
 import { deleteAuthor } from "../useCases/author/deleteAuthor";
 import { listAuthors } from "../useCases/author/listAuthors";
+import { listAuthorById } from "../useCases/author/listAuthorById";
 import { updateAuthor } from "../useCases/author/updateAuthor";
 
 const authorRoutes = Router();
 
 authorRoutes.get("/", (req, res) => {
     return listAuthors.handle(req, res);
+});
+
+authorRoutes.get("/:id", (req, res, next) => {
+    return listAuthorById.handle(req, res, next);
 });
 
 authorRoutes.post("/", (req, res, next) => {
