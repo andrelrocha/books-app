@@ -14,10 +14,8 @@ class ListAuthorByIdController {
 
             return res.status(200).json(author);
         } catch (err) {
-            next(err);
+            return next(err) as unknown as Response<unknown, Record<string, unknown>>;
         }
-
-        return res.status(500).json({ error: "Internal server error" });
     }
 }
 

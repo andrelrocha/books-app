@@ -22,10 +22,8 @@ class UpdateBookController {
 
             return res.status(200).send({message: "Book updated successfully!"});
         } catch (err) {
-            next(err);
+            return next(err) as unknown as Response<unknown, Record<string, unknown>>;
         }
-
-        return res.status(500).json({ error: "Internal server error" });
     }
 }
 
