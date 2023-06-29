@@ -11,16 +11,16 @@ authorRoutes.get("/", (req, res) => {
     return listAuthors.handle(req, res);
 });
 
-authorRoutes.post("/", (req, res) => {
-    return createAuthor.handle(req, res);
+authorRoutes.post("/", (req, res, next) => {
+    return createAuthor.handle(req, res, next);
 });
 
-authorRoutes.put("/:id", (req, res) => {
-    return updateAuthor.handle(req, res);
+authorRoutes.put("/:id", (req, res, next) => {
+    return updateAuthor.handle(req, res, next);
 });
 
-authorRoutes.delete("/:id", (req, res) => {
-    return deleteAuthor.handle(req, res);
+authorRoutes.delete("/:id", (req, res, next) => {
+    return deleteAuthor.handle(req, res, next);
 });
 
 export { authorRoutes };

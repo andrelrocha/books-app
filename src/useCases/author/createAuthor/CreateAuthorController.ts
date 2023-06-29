@@ -1,4 +1,4 @@
-import { Request, Response } from "express"; 
+import { NextFunction, Request, Response } from "express"; 
 
 import { CreateAuthorUseCase } from "./CreateAuthorUseCase";
 
@@ -6,7 +6,7 @@ class CreateAuthorController {
 
     constructor(private createAuthor: CreateAuthorUseCase) {}
 
-    async handle(req: Request, res: Response): Promise<Response> {
+    async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
         const { name, country } = req.body;
 
         try {
@@ -17,18 +17,10 @@ class CreateAuthorController {
 
             return res.status(201).json(newAuthor);
         } catch (err) {
-            console.error(err);
-
-            if (typeof err === "string") {
-                return res.status(400).send(err);
-            }
-
-            if (err instanceof Error) {
-                return res.status(400).send(err.toString());
-            }
-
-            return res.status(500).send("Internal Server Error");
+            next(err);
         }
+
+        return res.status(500).json({ error: "Internal server error" });
     }
 }
 

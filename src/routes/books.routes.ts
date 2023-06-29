@@ -13,24 +13,24 @@ booksRoutes.get("/", (req, res) => {
     return listBooks.handle(req, res);
 });
 
-booksRoutes.get("/search", (req, res) => {
-    return listBookByPublisher.handle(req, res);
+booksRoutes.get("/search", (req, res, next) => {
+    return listBookByPublisher.handle(req, res, next);
 });
 
-booksRoutes.get("/:id", (req, res) => {
-    return listBookById.handle(req, res);
+booksRoutes.get("/:id", (req, res, next) => {
+    return listBookById.handle(req, res, next);
 });
 
-booksRoutes.post("/", (req, res) => {
-    return createBook.handle(req, res);
+booksRoutes.post("/", (req, res, next) => {
+    return createBook.handle(req, res, next);
 });
 
-booksRoutes.put("/:id", (req, res) => {
-    return updateBook.handle(req, res);
+booksRoutes.put("/:id", (req, res, next) => {
+    return updateBook.handle(req, res, next);
 });
 
-booksRoutes.delete("/:id", (req, res) => {
-    return deleteBook.handle(req, res);
+booksRoutes.delete("/:id", (req, res, next) => {
+    return deleteBook.handle(req, res, next);
 });
 
 export { booksRoutes };
