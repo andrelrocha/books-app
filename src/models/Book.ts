@@ -21,8 +21,14 @@ const bookSchema = new mongoose.Schema({
     },
     pageqty: {
         type: Number,
-        min: [10, "{VALUE} pages is not valid --- Book's page quantity must be greater than 10 and less than 10000"],
-        max: [10000, "{VALUE} pages is not valid --- Book's page quantity must be greater than 10 and less than 10000"],
+        validate: {
+            validator: (value: number) => {
+                return value > 10 && value < 10000;
+            },
+            message: "{VALUE} pages is not valid --- Book's page quantity must be greater than 10 and less than 10000"
+        }
+        //min: [10, "{VALUE} pages is not valid --- Book's page quantity must be greater than 10 and less than 10000"],
+        //max: [10000, "{VALUE} pages is not valid --- Book's page quantity must be greater than 10 and less than 10000"],
     },
 });
 
