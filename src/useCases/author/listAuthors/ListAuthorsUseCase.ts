@@ -1,4 +1,4 @@
-import { authors } from "../../../models/Author";
+import { authors } from "../../../models/";
 
 class ListAuthorsUseCase {
     

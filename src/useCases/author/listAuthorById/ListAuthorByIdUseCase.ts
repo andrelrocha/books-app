@@ -1,4 +1,4 @@
-import { authors } from "../../../models/Author";
+import { authors } from "../../../models/";
 
 class ListAuthorByIdUseCase {
     async execute(id: string) {
