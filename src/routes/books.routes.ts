@@ -3,6 +3,7 @@ import { Router } from "express";
 import { createBook } from "../useCases/books/createBooks";
 import { deleteBook } from "../useCases/books/deleteBooks";
 import { listBooks } from "../useCases/books/listBooks";
+import { listBooksByAuthor } from "../useCases/books/listBooksByAuthor";
 import { listBookById } from "../useCases/books/listBookById";
 import { listBookByPageQty } from "../useCases/books/listBookByPageQty";
 import { listBookByPublisher } from "../useCases/books/listBookByPublisher";
@@ -16,7 +17,7 @@ booksRoutes.get("/", (req, res) => {
 });
 
 booksRoutes.get("/search", (req, res, next) => {
-    const { publisher, title, pageqty } = req.query;
+    const { publisher, title, pageqty, author } = req.query;
   
     if (publisher) {
         return listBookByPublisher.handle(req, res, next);
@@ -26,6 +27,9 @@ booksRoutes.get("/search", (req, res, next) => {
     }
     if (pageqty) {
         return listBookByPageQty.handle(req, res, next);
+    }
+    if (author) {
+        return listBooksByAuthor.handle(req, res, next);
     }
 });
 
