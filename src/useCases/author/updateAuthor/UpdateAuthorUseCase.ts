@@ -16,7 +16,7 @@ class UpdateAuthorUseCase {
                     name,
                     country,
                 },
-                { new: true }
+                { new: true, runValidators: true }
             );
       
             if (updatedAuthor) {

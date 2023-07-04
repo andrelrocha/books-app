@@ -20,7 +20,7 @@ class UpdateBookUseCase {
                     publisher,
                     pageqty,
                 },
-                { new: true }
+                { new: true, runValidators: true }
             );
       
             if (updatedBook) {
