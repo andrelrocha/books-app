@@ -6,9 +6,9 @@ class ListBookByTitleController {
     constructor(private listBookByTitle: ListBookByTitleUseCase) { }
 
     async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
-        const { title } = req.query;
-
         try {
+            const { title } = req.query;
+
             const booksByTitle = await this.listBookByTitle.execute(title as string);
 
             return res.status(200).json(booksByTitle);

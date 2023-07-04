@@ -12,8 +12,8 @@ import { updateBook } from "../useCases/books/updateBooks";
 
 const booksRoutes = Router();
 
-booksRoutes.get("/", (req, res) => {
-    return listBooks.handle(req, res);
+booksRoutes.get("/", (req, res, next) => {
+    return listBooks.handle(req, res, next);
 });
 
 booksRoutes.get("/search", (req, res, next) => {
