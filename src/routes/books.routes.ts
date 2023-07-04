@@ -4,6 +4,7 @@ import { createBook } from "../useCases/books/createBooks";
 import { deleteBook } from "../useCases/books/deleteBooks";
 import { listBooks } from "../useCases/books/listBooks";
 import { listBookById } from "../useCases/books/listBookById";
+import { listBookByPageQty } from "../useCases/books/listBookByPageQty";
 import { listBookByPublisher } from "../useCases/books/listBookByPublisher";
 import { listBookByTitle } from "../useCases/books/listBookByTitle";
 import { updateBook } from "../useCases/books/updateBooks";
@@ -15,13 +16,16 @@ booksRoutes.get("/", (req, res) => {
 });
 
 booksRoutes.get("/search", (req, res, next) => {
-    const { publisher, title } = req.query;
+    const { publisher, title, pageqty } = req.query;
   
     if (publisher) {
         return listBookByPublisher.handle(req, res, next);
     }
     if (title) {
         return listBookByTitle.handle(req, res, next);
+    }
+    if (pageqty) {
+        return listBookByPageQty.handle(req, res, next);
     }
 });
 
