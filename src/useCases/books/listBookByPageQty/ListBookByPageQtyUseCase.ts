@@ -7,9 +7,9 @@ class ListBookByPageQtyUseCase {
             let booksByPageQty: any = {};
 
             if (minPage) {
-                booksByPageQty = await books.find({ "pageqty": { $gte: pageQty } });
+                booksByPageQty = await books.find({ "pageqty": { $gte: pageQty } }).sort({ "pageqty": -1 });
             } else if (maxPage) {
-                booksByPageQty = await books.find({ "pageqty": { $lte: pageQty } });
+                booksByPageQty = await books.find({ "pageqty": { $lte: pageQty } }).sort({ "pageqty": 1 });
             } else {
                 booksByPageQty = await books.find({ "pageqty": pageQty });
             }
