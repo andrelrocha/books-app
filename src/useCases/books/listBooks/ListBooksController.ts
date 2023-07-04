@@ -17,7 +17,11 @@ class ListBooksController {
                 return next(err) as unknown as Response<unknown, Record<string, unknown>>;
             }
 
-            const allBooks = await this.listBooksUseCase.execute(limit, page);
+            const asc = typeof req.query.asc !== "undefined";
+            const desc = typeof req.query.desc !== "undefined";
+
+            const allBooks = await this.listBooksUseCase.execute(limit, page, asc, desc);
+            
             return res.status(200).json(allBooks);
 
         } catch (err) {

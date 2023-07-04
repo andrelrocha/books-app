@@ -9,8 +9,8 @@ import { listAuthorByName } from "../useCases/author/listAuthorByName";
 
 const authorRoutes = Router();
 
-authorRoutes.get("/", (req, res) => {
-    return listAuthors.handle(req, res);
+authorRoutes.get("/", (req, res, next) => {
+    return listAuthors.handle(req, res, next);
 });
 
 authorRoutes.get("/search", (req, res, next) => {
