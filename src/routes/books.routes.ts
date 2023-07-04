@@ -5,6 +5,7 @@ import { deleteBook } from "../useCases/books/deleteBooks";
 import { listBooks } from "../useCases/books/listBooks";
 import { listBookById } from "../useCases/books/listBookById";
 import { listBookByPublisher } from "../useCases/books/listBookByPublisher";
+import { listBookByTitle } from "../useCases/books/listBookByTitle";
 import { updateBook } from "../useCases/books/updateBooks";
 
 const booksRoutes = Router();
@@ -14,7 +15,14 @@ booksRoutes.get("/", (req, res) => {
 });
 
 booksRoutes.get("/search", (req, res, next) => {
-    return listBookByPublisher.handle(req, res, next);
+    const { publisher, title } = req.query;
+  
+    if (publisher) {
+        return listBookByPublisher.handle(req, res, next);
+    }
+    if (title) {
+        return listBookByTitle.handle(req, res, next);
+    }
 });
 
 booksRoutes.get("/:id", (req, res, next) => {
