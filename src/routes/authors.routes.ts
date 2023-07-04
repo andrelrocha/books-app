@@ -5,11 +5,20 @@ import { deleteAuthor } from "../useCases/author/deleteAuthor";
 import { listAuthors } from "../useCases/author/listAuthors";
 import { listAuthorById } from "../useCases/author/listAuthorById";
 import { updateAuthor } from "../useCases/author/updateAuthor";
+import { listAuthorByName } from "../useCases/author/listAuthorByName";
 
 const authorRoutes = Router();
 
 authorRoutes.get("/", (req, res) => {
     return listAuthors.handle(req, res);
+});
+
+authorRoutes.get("/search", (req, res, next) => {
+    const { name } = req.query;
+
+    if (name) {
+        return listAuthorByName.handle(req, res, next);
+    }
 });
 
 authorRoutes.get("/:id", (req, res, next) => {

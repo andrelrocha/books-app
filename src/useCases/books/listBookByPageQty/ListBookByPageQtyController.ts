@@ -7,14 +7,14 @@ class ListBookByPageQtyController {
     constructor(private listBookByPageQty: ListBookByPageQtyUseCase) { }
 
     async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
-        const pageQty = typeof req.query.pageqty === "string" ? parseInt(req.query.pageqty) : undefined;
+        const { pageQty } = req.query;
         
-        // Verifica se a query minPage/maxPage existem, e define a variável como true caso existam, caso contrário, será falso.
+        // Verifica se a query minPage/maxPage existem, e define a variável como true caso existam
         const minPage = typeof req.query.minPage !== "undefined";
         const maxPage = typeof req.query.maxPage !== "undefined";
     
         try {
-            const booksByPageQty = await this.listBookByPageQty.execute(pageQty, minPage, maxPage);
+            const booksByPageQty = await this.listBookByPageQty.execute(pageQty as string, minPage, maxPage);
     
             return res.status(200).json(booksByPageQty);
         } catch (err) {
