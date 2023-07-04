@@ -3,7 +3,9 @@ import { books } from "../../../models";
 class ListBookByTitleUseCase {
     async execute(title: string) {
         try {
-            const booksByTitle = await books.find({ "title": title });
+            const regex = new RegExp(title, "i"); // Cria uma expressão regular case-insensitive
+            
+            const booksByTitle = await books.find({ "title": { $regex: regex } });
 
             if (booksByTitle.length === 0) {
                 throw new Error("No books found for the specified title!");
