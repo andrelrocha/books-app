@@ -17,7 +17,7 @@ class ListBooksController {
                 return next(err) as unknown as Response<unknown, Record<string, unknown>>;
             }
 
-            const { order = "name:-1" } = req.query;
+            const { order = "title:1" } = req.query;
 
             const allBooks = await this.listBooksUseCase.execute(limit, page, order);
             
