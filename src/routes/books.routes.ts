@@ -6,7 +6,7 @@ import { listBooks } from "../useCases/books/listBooks";
 import { listBooksByAuthor } from "../useCases/books/listBooksByAuthor";
 import { listBookById } from "../useCases/books/listBookById";
 import { listBookByPageQty } from "../useCases/books/listBookByPageQty";
-import { listBookByPublisher } from "../useCases/books/listBookByPublisher";
+import { listBookByPublisher } from "../useCases/books/listBooksByPublisher";
 import { listBookByTitle } from "../useCases/books/listBookByTitle";
 import { updateBook } from "../useCases/books/updateBooks";
 

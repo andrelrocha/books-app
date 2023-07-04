@@ -1,4 +1,4 @@
-import { books } from "../../../models/";
+import { books } from "../../../models";
 
 class ListBookByPublisherUseCase {
 
