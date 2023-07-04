@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 
 app.use(router);
-app.use(errorHandle400);
 app.use(errorHandle404);
+app.use(errorHandle400);
 
 export { app };
